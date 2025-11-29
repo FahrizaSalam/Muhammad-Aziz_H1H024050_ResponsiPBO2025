@@ -1,0 +1,478 @@
+/* ===== styles.css - Light Dark Blue Ocean Theme ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e6f7ff 0%, #0a2a43 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 46, 92, 0.3);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.header {
+    background: linear-gradient(135deg, #0a3d62 0%, #1e88e5 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-size: cover;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+    position: relative;
+}
+
+.content {
+    padding: 40px;
+}
+
+.pokemon-card {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e1f5fe 100%);
+    border: 3px solid #1e88e5;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(30, 136, 229, 0.1);
+}
+
+.pokemon-name {
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.pokemon-type {
+    display: inline-block;
+    background: #1e88e5;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(30, 136, 229, 0.3);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-box {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #1e88e5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #546e7a;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #0a3d62;
+}
+
+.special-move {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 2px solid #0a3d62;
+    box-shadow: 0 4px 8px rgba(10, 61, 98, 0.1);
+}
+
+.special-move h3 {
+    color: #0a3d62;
+    margin-bottom: 10px;
+}
+
+.special-move p {
+    color: #546e7a;
+    line-height: 1.6;
+}
+
+.special-move small {
+    display: block;
+    margin-top: 10px;
+    color: #78909c;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0a3d62 0%, #1e88e5 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(10, 61, 98, 0.4);
+}
+
+.btn-secondary {
+    background: #0a3d62;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #083154;
+    transform: translateY(-3px);
+}
+
+.btn-back {
+    background: #78909c;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.btn-back:hover {
+    background: #546e7a;
+    transform: translateY(-3px);
+}
+
+.btn-submit {
+    width: 100%;
+}
+
+.page-title {
+    color: #ffffff;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.page-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #0a3d62, #1e88e5);
+    border-radius: 3px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #0a3d62;
+}
+
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e1f5fe;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    background: #f8fdff;
+}
+
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+}
+
+.form-hint {
+    display: block;
+    color: #78909c;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+.training-form {
+    background: #f0f8ff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #e1f5fe;
+}
+
+.training-result {
+    background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+    border-left: 5px solid #0288d1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.training-result h3 {
+    color: #01579b;
+    margin-bottom: 15px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.result-item {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.result-item strong {
+    color: #0a3d62;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.history-table th {
+    background: #0a3d62;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.history-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e1f5fe;
+}
+
+.history-table tr:hover {
+    background: #f0f8ff;
+}
+
+.history-table tr:nth-child(even) {
+    background: #f8fdff;
+}
+
+.empty-message {
+    text-align: center;
+    color: #78909c;
+    padding: 40px;
+    font-size: 1.1em;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.badge-attack {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.badge-defense {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.badge-speed {
+    background: #f3e5f5;
+    color: #6a1b9a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .history-table {
+        font-size: 0.9em;
+    }
+    
+    .history-table th,
+    .history-table td {
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #0a2a43 0%, #001f3f 100%);
+        color: #e1f5fe;
+    }
+    
+    .container {
+        background: rgba(10, 42, 67, 0.95);
+        color: #e1f5fe;
+    }
+    
+    .pokemon-card {
+        background: linear-gradient(135deg, #0a3d62 0%, #083154 100%);
+        border-color: #0288d1;
+    }
+    
+    .pokemon-name {
+        color: #e1f5fe;
+    }
+    
+    .stat-box {
+        background: #083154;
+        color: #e1f5fe;
+    }
+    
+    .stat-label {
+        color: #b3e5fc;
+    }
+    
+    .stat-value {
+        color: #e1f5fe;
+    }
+    
+    .special-move {
+        background: #083154;
+        border-color: #0288d1;
+    }
+    
+    .special-move h3 {
+        color: #b3e5fc;
+    }
+    
+    .special-move p {
+        color: #e1f5fe;
+    }
+    
+    .training-form {
+        background: #0a3d62;
+        border-color: #0288d1;
+    }
+    
+    label {
+        color: #b3e5fc;
+    }
+    
+    input[type="number"],
+    select {
+        background: #083154;
+        border-color: #0288d1;
+        color: #e1f5fe;
+    }
+    
+    .result-item {
+        background: #083154;
+    }
+    
+    .result-item strong {
+        color: #e1f5fe;
+    }
+    
+    .history-table tr:hover {
+        background: #0a3d62;
+    }
+    
+    .history-table tr:nth-child(even) {
+        background: #083154;
+    }
+}
