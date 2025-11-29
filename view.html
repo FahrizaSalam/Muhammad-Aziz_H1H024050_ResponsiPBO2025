@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéCare - Poliwag Training Center</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> PokéCare </h1>
+            <p>Pokémon Research & Training Center</p>
+        </div>
+        
+        <div class="content">
+            <?php if ($page === 'home'): ?>
+                <div class="pokemon-card">
+                    <div class="pokemon-name">
+                        <?php echo $poliwag->getName(); ?>
+                    </div>
+                    <div class="pokemon-type">
+                        <?php echo strtoupper($poliwag->getType()); ?> Type
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-label">Level</div>
+                            <div class="stat-value"><?php echo $poliwag->getLevel(); ?></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">HP</div>
+                            <div class="stat-value"><?php echo $poliwag->getHp(); ?> / <?php echo $poliwag->getInfo()['maxHp']; ?></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Attack</div>
+                            <div class="stat-value"><?php echo $poliwag->getAttack(); ?></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Defense</div>
+                            <div class="stat-value"><?php echo $poliwag->getDefense(); ?></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Speed</div>
+                            <div class="stat-value"><?php echo $poliwag->getSpeed(); ?></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Type</div>
+                            <div class="stat-value"><?php echo $poliwag->getType(); ?></div>
+                        </div>
+                    </div>
+                    
+                    <div class="special-move">
+                        <h3>Special Ability</h3>
+                        <strong><?php echo $poliwag->getSpecialMoveName(); ?></strong>
+                        <p><?php echo $poliwag->getInfo()['specialMove']['description']; ?></p>
+                        <small>Effect: <?php echo $poliwag->getInfo()['specialMove']['effect']; ?></small>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <a href="?page=training" class="btn btn-primary"> mulai Training</a>
+                    <a href="?page=history" class="btn btn-secondary"> History Training</a>
+                </div>
+            
+            <?php elseif ($page === 'training'): ?>
+                <a href="?page=home" class="btn btn-back">← Beranda </a>
+                
+                <h2 class="page-title"> Poliwag Training Session </h2>
+                
+                <?php if ($trainingResult): ?>
+                    <div class="training-result">
+                        <h3>✅ Training Complete!</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <strong>Training Type:</strong>
+                                <span class="badge badge-<?php echo strtolower($trainingResult['trainingType']); ?>">
+                                    <?php echo $trainingResult['trainingType']; ?>
+                                </span>
+                            </div>
+                            <div class="result-item">
+                                <strong>Intensity:</strong>
+                                <?php echo $trainingResult['intensity']; ?>
+                            </div>
+                            <div class="result-item">
+                                <strong>Level:</strong>
+                                <?php echo $trainingResult['levelBefore']; ?> → <?php echo $trainingResult['levelAfter']; ?>
+                            </div>
+                            <div class="result-item">
+                                <strong>HP:</strong>
+                                <?php echo $trainingResult['hpBefore']; ?> → <?php echo $trainingResult['hpAfter']; ?>
+                            </div>
+                            <div class="result-item">
+                                <strong>Attack:</strong>
+                                <?php echo $trainingResult['attackBefore']; ?> → <?php echo $trainingResult['attackAfter']; ?>
+                            </div>
+                            <div class="result-item">
+                                <strong>Defense:</strong>
+                                <?php echo $trainingResult['defenseBefore']; ?> → <?php echo $trainingResult['defenseAfter']; ?>
+                            </div>
+                            <div class="result-item">
+                                <strong>Speed:</strong>
+                                <?php echo $trainingResult['speedBefore']; ?> → <?php echo $trainingResult['speedAfter']; ?>
+                            </div>
+                            <div class="result-item">
+                                <strong>Time:</strong>
+                                <?php echo $trainingResult['timestamp']; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                
+                <form method="POST" class="training-form">
+                    <input type="hidden" name="action" value="train">
+                    
+                    <div class="form-group">
+                        <label for="trainingType">Select Training Type:</label>
+                        <select name="trainingType" id="trainingType" required>
+                            <option value="">-- Choose Training Type --</option>
+                            <option value="Attack">Attack Training</option>
+                            <option value="Defense">Defense Training</option>
+                            <option value="Speed">Speed Training</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="intensity">Training Intensity (1-100):</label>
+                        <input type="number" name="intensity" id="intensity" min="1" max="100" value="50" required>
+                        <small class="form-hint">Intensitas yang lebih tinggi dapat meningkatan stat dan perolehan level yang lebih besar</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-submit">Mulai Training</button>
+                </form>
+                
+                <div class="btn-group" style="margin-top: 20px;">
+                    <a href="?page=history" class="btn btn-secondary">History</a>
+                </div>
+            
+            <?php elseif ($page === 'history'): ?>
+                <a href="?page=home" class="btn btn-back">← Beranda </a>
+                
+                <h2 class="page-title">History Training</h2>
+                
+                <?php 
+                $sessions = $trainingSession->getSessions();
+                if (count($sessions) > 0):
+                ?>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Training Type</th>
+                                <th>Intensity</th>
+                                <th>Level Change</th>
+                                <th>HP Change</th>
+                                <th>Attack Change</th>
+                                <th>Defense Change</th>
+                                <th>Speed Change</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($sessions as $session): ?>
+                                <tr>
+                                    <td>
+                                        <span class="badge badge-<?php echo strtolower($session['trainingType']); ?>">
+                                            <?php echo $session['trainingType']; ?>
+                                        </span>
+                                    </td>
+                                    <td><?php echo $session['intensity']; ?></td>
+                                    <td><?php echo $session['levelBefore']; ?> → <?php echo $session['levelAfter']; ?></td>
+                                    <td><?php echo $session['hpBefore']; ?> → <?php echo $session['hpAfter']; ?></td>
+                                    <td><?php echo $session['attackBefore']; ?> → <?php echo $session['attackAfter']; ?></td>
+                                    <td><?php echo $session['defenseBefore']; ?> → <?php echo $session['defenseAfter']; ?></td>
+                                    <td><?php echo $session['speedBefore']; ?> → <?php echo $session['speedAfter']; ?></td>
+                                    <td><?php echo $session['timestamp']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <div class="empty-message">
+                        Belum ada sesi latihan. Mulai sesi latihan pertama Anda!
+                    </div>
+                <?php endif; ?>
+                
+                <div class="btn-group" style="margin-top: 30px;">
+                    <a href="?page=training" class="btn btn-primary">New Training Session</a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</body>
+</html>
