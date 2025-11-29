@@ -1,8 +1,6 @@
 <?php
-// ===== index.php =====
 session_start();
 
-// ===== Classes Definition =====
 abstract class Pokemon {
     protected $name;
     protected $type;
@@ -157,7 +155,7 @@ class TrainingSession {
     }
 }
 
-// Initialize Pokemon
+
 if (!isset($_SESSION['poliwag'])) {
     $_SESSION['poliwag'] = new Poliwag();
 }
@@ -169,7 +167,7 @@ if (!isset($_SESSION['trainingSession'])) {
 $poliwag = $_SESSION['poliwag'];
 $trainingSession = $_SESSION['trainingSession'];
 
-// Handle Training Form
+
 $trainingResult = null;
 if ($_SERVER['REQUEST_METHOD'] ?? false) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'train') {
@@ -181,9 +179,9 @@ if ($_SERVER['REQUEST_METHOD'] ?? false) {
     }
 }
 
-// Handle page navigation
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
-// Load HTML View
+
 include 'view.html';
 ?>
