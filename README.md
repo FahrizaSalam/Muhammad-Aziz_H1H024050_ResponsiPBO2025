@@ -1,4 +1,10 @@
-Nama : Muhammad Aziz Ihza Fahriza Salam Shift awal : C Shift Akhir : C
+Nama : Muhammad Aziz Ihza Fahriza Salam 
+
+NIM : H1H024050 
+
+hift awal : C 
+
+Shift Akhir : C
 
 Program ini merupakan aplikasi simulasi sederhana berbasis web untuk melatih karakter Pokemon, Struktur utamanya dimulai dengan definisi kelas abstrak Pokemon yang menetapkan kerangka dasar berupa properti (seperti nama, level, HP, serangan) dan metode dasar yang harus dimiliki oleh setiap Pokemon. Kelas ini kemudian diturunkan menjadi kelas WaterPokemon yang memiliki logika spesifik untuk menghitung kenaikan status saat latihan, dan akhirnya diimplementasikan pada kelas Poliwag yang menetapkan status awal karakter serta jurus spesial bernama Bubble Beam.
 
